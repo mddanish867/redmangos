@@ -8,9 +8,9 @@ import AuthenticationTest from "./AuthenticationTest";
 import AuthenticationTestAdmin from "./AuthenticationTestAdmin";
 import AccessDenied from "./AccessDenied";
 import Payment from "./Payment";
-// import OrderConfirmed from "./Order/OrderConfirmed";
-// import MyOrders from "./Order/MyOrders";
-// import OrderDetails from "./Order/OrderDetails";
+import OrderConfirmed from "./Order/OrderConfirmed";
+import MyOrders from "./Order/MyOrders";
+import OrderDetails from "./Order/OrderDetails";
 // import AllOrders from "./Order/AllOrders";
 // import MenuItemList from "./MenuItem/MenuItemList";
 // import MenuItemUpsert from "./MenuItem/MenuItemUpsert";
@@ -25,5 +25,8 @@ export {
   AuthenticationTest,
   AuthenticationTestAdmin,
   AccessDenied,
-  Payment
+  Payment,
+  OrderConfirmed,
+  MyOrders,
+  OrderDetails
 };

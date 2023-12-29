@@ -1,4 +1,3 @@
-import React from 'react'
 import { orderSummaryProps } from './OrderSummaryProps'
 import { cartItemModel } from '../../../Interfaces'
 
@@ -12,7 +11,7 @@ function OrderSummary({data,userInput}:orderSummaryProps) {
         <div className="border py-3 px-2">Email : {userInput.email}</div>
         <div className="border py-3 px-2">Phone : {userInput.phoneNumber}</div>
         <div className="border py-3 px-2">
-            {data.cartItems.map((cartItem:cartItemModel, index:number)=>{
+            {data.cartItems?.map((cartItem:cartItemModel, index:number)=>{
                 return(
 <div className="d-flex">
               <div className="d-flex w-100 justify-content-between">
@@ -28,7 +27,7 @@ function OrderSummary({data,userInput}:orderSummaryProps) {
             
             <hr />
             <h4 className="text-danger" style={{ textAlign: "right" }}>
-              ${data.cartTotal.toFixed(2)}
+              ${data.cartTotal?.toFixed(2)}
             </h4>
           </div>
         </div>

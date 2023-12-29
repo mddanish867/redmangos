@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { cartItemModel, userModel } from "../../Interfaces";
 import { RootState } from "../../Storage/Redux/store";
-import { emptyUserState, setLoggedInUser } from "../../Storage/Redux/userAuthSlice";
+import {
+  emptyUserState,
+  setLoggedInUser,
+} from "../../Storage/Redux/userAuthSlice";
 
 let logo = require("../../Assets/Images/mango.png");
 
 function Header() {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const shoppingCartFromStore: cartItemModel[] = useSelector(
@@ -20,13 +22,11 @@ function Header() {
   );
 
   // Logout functionality
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localStorage.removeItem("token");
-    dispatch(setLoggedInUser({...emptyUserState}));
+    dispatch(setLoggedInUser({ ...emptyUserState }));
     navigate("/");
-  }
-
-
+  };
 
   return (
     <nav
@@ -66,11 +66,18 @@ function Header() {
                 to="/shoppingCart"
               >
                 <i className="bi bi-cart"></i>
-                {userData.id  && ` (${shoppingCartFromStore.length})`}     
-                 
+                {userData.id && ` (${shoppingCartFromStore.length})`}
               </NavLink>
             </li>
-
+            <li className="nav-item">
+              <NavLink
+                className="nav-link text-white"
+                aria-current="page"
+                to="/order/myorders"
+              >
+                Order{" "}
+              </NavLink>
+            </li>
             <li className="nav-item">
               <NavLink
                 className="nav-link text-white"

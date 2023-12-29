@@ -4,7 +4,10 @@ import {
   Home,
   Login,
   MenuItemDetails,
+  MyOrders,
   NotFound,
+  OrderConfirmed,
+  OrderDetails,
   Payment,
   Register,
   ShoppingCart,
@@ -66,8 +69,13 @@ function App() {
             path="/authenticationtestadmin"
             element={<AuthenticationTestAdmin />}
           ></Route>
-           <Route path="/payment" element={<Payment />}></Route>
-
+          <Route path="/payment" element={<Payment />}></Route>
+          <Route
+            path="/order/orderconfirmed/:id"
+            element={<OrderConfirmed />}
+          ></Route>
+          <Route path="/order/myOrders" element={<MyOrders />}></Route>
+          <Route path="/order/orderDetails/:id" element={<OrderDetails />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

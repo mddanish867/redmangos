@@ -33,7 +33,6 @@ function Login() {
       password: userInput.password,
     });
     if (response.data) {
-      console.log(response.data);
       const { token } = response.data.result;
       // decoding the item inside token
       const { fullName, id, email, role }: userModel = jwt_decode(token);
@@ -41,7 +40,6 @@ function Login() {
       dispatch(setLoggedInUser({ fullName, id, email, role }));
       navigate("/");
     } else if (response.error) {
-      console.log(response.error.data.errorMessage[0]);
       SetError(response.error.data.errorMessage[0]);
     }
     setLoading(false);
