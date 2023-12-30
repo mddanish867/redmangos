@@ -21,7 +21,7 @@ function OrderDetails() {
   }
   return (
     <div
-      className="container my-5 mx-auto p-5 w-100"
+      className="container my-2 mx-auto p-5 w-100"
       style={{ maxWidth: "750px" }}
     >
       {!isLoading && orderDetails && userInput && (

@@ -35,6 +35,18 @@ const orderApi = createApi({
       }),
       providesTags: ["Orders"],
     }),
+    // update status
+    updateOrderHeader : builder.mutation({
+      query:(orderDetails)=>({
+        url:"order/" + orderDetails.orderHeaderId,
+        method:"PUT",
+        headers:{
+          "Content-type":"application/json",
+        },
+        body:orderDetails
+      }),
+      invalidatesTags:["Orders"]
+    })
   }),
 });
 
@@ -42,5 +54,6 @@ export const {
   useCreateOrderMutation,
   useGetAllOrderQuery,
   useGetOrderDetailsQuery,
+  useUpdateOrderHeaderMutation,
 } = orderApi;
 export default orderApi;

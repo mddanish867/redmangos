@@ -11,9 +11,9 @@ import Payment from "./Payment";
 import OrderConfirmed from "./Order/OrderConfirmed";
 import MyOrders from "./Order/MyOrders";
 import OrderDetails from "./Order/OrderDetails";
-// import AllOrders from "./Order/AllOrders";
-// import MenuItemList from "./MenuItem/MenuItemList";
-// import MenuItemUpsert from "./MenuItem/MenuItemUpsert";
+import AllOrders from "./Order/AllOrders";
+import MenuItemList from "./MenuItem/MenuItemList";
+import MenuItemUpsert from "./MenuItem/MenuItemUpsert";
 
 export {
   Home,
@@ -28,5 +28,8 @@ export {
   Payment,
   OrderConfirmed,
   MyOrders,
-  OrderDetails
+  OrderDetails,
+  AllOrders,
+  MenuItemList,
+  MenuItemUpsert
 };

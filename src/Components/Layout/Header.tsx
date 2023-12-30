@@ -7,6 +7,7 @@ import {
   emptyUserState,
   setLoggedInUser,
 } from "../../Storage/Redux/userAuthSlice";
+import { SD_Roles, SD_Status } from "../../Utility/SD";
 
 let logo = require("../../Assets/Images/mango.png");
 
@@ -59,26 +60,56 @@ function Header() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link text-white"
-                aria-current="page"
-                to="/shoppingCart"
-              >
-                <i className="bi bi-cart"></i>
-                {userData.id && ` (${shoppingCartFromStore.length})`}
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link text-white"
-                aria-current="page"
-                to="/order/myorders"
-              >
-                Order{" "}
-              </NavLink>
-            </li>
-            <li className="nav-item">
+            {userData.role === SD_Roles.ADMIN ? (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Admin Panel
+                </a>
+                <ul className="dropdown-menu pt-4">
+                  <li
+                    className="dropdown-item"
+                    onClick={() => navigate("menuItem/menuitemlist")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Menu Item
+                  </li>
+
+                  <li
+                    className="dropdown-item"
+                    onClick={() => navigate("order/myorders")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    My orders
+                  </li>
+
+                  <li
+                    className="dropdown-item"
+                    onClick={() => navigate("order/allorders")}
+                    style={{ cursor: "pointer" }}
+                  >
+                    All orders
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link text-white"
+                  aria-current="page"
+                  to="/order/myorders"
+                >
+                  Order{" "}
+                </NavLink>
+              </li>
+            )}
+
+            {/* <li className="nav-item">
               <NavLink
                 className="nav-link text-white"
                 aria-current="page"
@@ -96,34 +127,29 @@ function Header() {
               >
                 Authorization
               </NavLink>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle text-white"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            </li> */}
+
+            <li className="nav-item">
+              <NavLink
+                className="nav-link text-white"
+                aria-current="page"
+                to="/shoppingCart"
+                style={{ position: "relative" }}
               >
-                Admin Panel
-              </a>
-              <ul className="dropdown-menu pt-4">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Something else here
-                  </a>
-                </li>
-              </ul>
+                <i className="bi bi-cart">
+                  <span
+                    className="badge badge-warning"
+                    style={{
+                      position: "absolute",
+                      top: "0px",
+                      right: "-10px",
+                      display: "block",
+                    }}
+                  >
+                    {userData.id && `${shoppingCartFromStore.length}`}
+                  </span>
+                </i>
+              </NavLink>
             </li>
             <div className="d-flex" style={{ marginLeft: "auto" }}>
               {userData.id && (

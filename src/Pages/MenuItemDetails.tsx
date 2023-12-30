@@ -16,7 +16,9 @@ function MenuItemDetails() {
   const [quantity, setQuantity] = useState(1);
   const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
   const [updateShoppingCart] = useUpdateShoppingCartMutation();
-  const userData: userModel = useSelector((state: RootState) => state.userAuthStore);
+  const userData: userModel = useSelector(
+    (state: RootState) => state.userAuthStore
+  );
 
   const handleQuanity = (counter: number) => {
     let newQuanitity = quantity + counter;
@@ -29,9 +31,8 @@ function MenuItemDetails() {
 
   // Add to cart functionality
   const handleAddToCart = async (menuItemId: number) => {
-
-     // checking if user is Authenticated or not
-     if(!userData.id){
+    // checking if user is Authenticated or not
+    if (!userData.id) {
       navigate("/login");
       return;
     }
@@ -51,11 +52,15 @@ function MenuItemDetails() {
       {!isLoading ? (
         <div className="row">
           <div className="col-7">
-            <h2 className="text-success">{data.result?.name}</h2>
+            <h4 className="text-success">{data.result?.name}</h4>
             <span>
               <span
-                className="badge text-bg-dark pt-2"
-                style={{ height: "40px", fontSize: "20px" }}
+                className="badge text-bg-secondary pt-2"
+                style={{
+                  height: "40px",
+                  fontSize: "20px",
+                  borderRadius: "1px",
+                }}
               >
                 {data.result?.category}
               </span>
@@ -71,10 +76,11 @@ function MenuItemDetails() {
             <p style={{ fontSize: "20px" }} className="pt-2">
               {data.result?.description}
             </p>
-            <span className="h5 text-muted">${data.result?.price}</span> &nbsp;&nbsp;&nbsp;
+            <span className="h5 text-muted">${data.result?.price}</span>{" "}
+            &nbsp;&nbsp;&nbsp;
             <span
               className="pb-2  p-3"
-              style={{ border: "1px solid #333", borderRadius: "30px" }}
+              style={{ border: "1px solid #333", borderRadius: "1px" }}
             >
               <i
                 onClick={() => {
@@ -94,7 +100,16 @@ function MenuItemDetails() {
             </span>
           </div>
           <div className="col-5">
-            <img src={data.result?.image} width="82%" alt="No content" style={{borderRadius:"50%",boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"}}></img>
+            <img
+              src={data.result?.image}
+              width="82%"
+              alt="No content"
+              style={{
+                borderRadius: "50%",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
+              }}
+            ></img>
             <div className="row pt-4">
               <div className="col-5">
                 {isAddingToCart ? (
@@ -121,7 +136,8 @@ function MenuItemDetails() {
                       backgroundColor: "#ff9f00",
                       fontSize: "18px",
                       fontWeight: 500,
-                      boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
+                      boxShadow:
+                        "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
                     }}
                   >
                     ADD TO CART
@@ -140,7 +156,8 @@ function MenuItemDetails() {
                     color: "#fff",
                     fontSize: "18px",
                     fontWeight: 500,
-                    boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"
+                    boxShadow:
+                      "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
                   }}
                 >
                   BACK TO HOME

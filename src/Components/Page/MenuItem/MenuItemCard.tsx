@@ -15,31 +15,39 @@ interface Props {
 function MenuItemCard(props: Props) {
   const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
   const [updateShoppingCart] = useUpdateShoppingCartMutation();
-  const userData: userModel = useSelector((state: RootState) => state.userAuthStore);
+  const userData: userModel = useSelector(
+    (state: RootState) => state.userAuthStore
+  );
   const navigate = useNavigate();
 
   // Add to cart functionality
   const handleAddToCart = async (menuItemId: number) => {
     // checking if user is Authenticated or not
-    if(!userData.id){
+    if (!userData.id) {
       navigate("/login");
       return;
     }
     setIsAddingToCart(true);
-    const response : apiResponse = await updateShoppingCart({
+    const response: apiResponse = await updateShoppingCart({
       menuItemId: menuItemId,
       updateQuantityBy: 1,
       userId: userData.id,
     });
-    if(response.data && response.data.isSuccess){
+    if (response.data && response.data.isSuccess) {
       toastNotify("Item added to the cart successfully!");
     }
     setIsAddingToCart(false);
   };
   return (
     <div className="col-md-4 col-12 p-4">
-      <div className="card"
-        style={{boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",border:"none"}}
+      <div
+        className="card"
+        style={{
+          boxShadow:
+            "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px",
+          border: "none",
+          borderRadius: "1px",
+        }}
       >
         <div className="card-body pt-2">
           <div className="row col-10 offset-1 p-4">
@@ -61,7 +69,7 @@ function MenuItemCard(props: Props) {
                   top: "15px",
                   left: "15px",
                   padding: "5px 10px",
-                  borderRadius: "3px",
+                  borderRadius: "1px",
                   outline: "none !important",
                   cursor: "pointer",
                 }}
@@ -77,7 +85,7 @@ function MenuItemCard(props: Props) {
                 right: "15px",
               }}
             >
-              <MiniLoader/>
+              <MiniLoader />
             </div>
           ) : (
             <i
@@ -87,7 +95,7 @@ function MenuItemCard(props: Props) {
                 top: "15px",
                 right: "15px",
                 padding: "5px 10px",
-                borderRadius: "3px",
+                borderRadius: "1px",
                 outline: "none !important",
                 cursor: "pointer",
               }}

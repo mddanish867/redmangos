@@ -1,9 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { Header, Footer } from "../Components/Layout";
 import {
+  AllOrders,
   Home,
   Login,
   MenuItemDetails,
+  MenuItemList,
+  MenuItemUpsert,
   MyOrders,
   NotFound,
   OrderConfirmed,
@@ -75,7 +78,23 @@ function App() {
             element={<OrderConfirmed />}
           ></Route>
           <Route path="/order/myOrders" element={<MyOrders />}></Route>
-          <Route path="/order/orderDetails/:id" element={<OrderDetails />}></Route>
+          <Route
+            path="/order/orderDetails/:id"
+            element={<OrderDetails />}
+          ></Route>
+          <Route path="/order/allorders" element={<AllOrders />}></Route>
+          <Route
+            path="/menuItem/menuitemlist"
+            element={<MenuItemList />}
+          ></Route>
+          <Route
+            path="/menuItem/menuItemUpsert/:id"
+            element={<MenuItemUpsert />}
+          />
+          <Route
+            path="/menuItem/menuItemUpsert"
+            element={<MenuItemUpsert />}
+          />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

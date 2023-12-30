@@ -51,7 +51,7 @@ function CartSummary() {
     <div className="container p-4 m-2" >
       <h4 className="text-center text-success">Cart Summary</h4>
       {shoppingCartFromStore.map((cartItem: cartItemModel, index: number) => (
-        <div className="d-flex flex-sm-row flex-column align-items-center custom-card-shadow rounded m-3" key={index} style={{boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"}}>
+        <div className="d-flex flex-sm-row flex-column align-items-center custom-card-shadow m-3" key={index} style={{borderRadius:"0px", boxShadow:"rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px"}}>
           <div className="p-3">
             <img
               src={cartItem.menuItem?.image}
