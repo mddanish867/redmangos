@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { menuItemModel, userModel } from "../../../Interfaces";
 import { Link, useNavigate } from "react-router-dom";
 import { useUpdateShoppingCartMutation } from "../../../Apis/shoppingCartApi";
-import { MiniLoader } from "../../../Pages/Common";
+import { MiniLoader } from "../Common";
 import apiResponse from "../../../Interfaces/apiResponse";
 import { toastNotify } from "../../../Helper";
 import { useSelector } from "react-redux";

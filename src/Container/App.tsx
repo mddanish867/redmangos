@@ -15,7 +15,7 @@ import {
   Register,
   ShoppingCart,
 } from "../Pages";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetShoppingCartQuery } from "../Apis/shoppingCartApi";
 import { setShoppingCart } from "../Storage/Redux/shoppingCartSlice";
@@ -29,11 +29,18 @@ import { RootState } from "../Storage/Redux/store";
 
 function App() {
   const dispatch = useDispatch();
+  const [skip, setSkip] = useState(true);
   const userData: userModel = useSelector(
     (state: RootState) => state.userAuthStore
   );
 
-  const { data, isLoading } = useGetShoppingCartQuery(userData.id);
+  const { data, isLoading } = useGetShoppingCartQuery(userData.id,{skip:skip,});
+  
+  useEffect(() => {
+    if (userData.id) {
+      setSkip(false);
+    }
+  }, [userData]);
 
   // To Prevent the refresh, after refresh user detail details will not go away
   useEffect(() => {

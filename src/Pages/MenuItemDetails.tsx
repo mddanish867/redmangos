@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetMenuItemByIdQuery } from "../Apis/menuItemApi";
 import { useUpdateShoppingCartMutation } from "../Apis/shoppingCartApi";
-import { MainLoader, MiniLoader } from "./Common";
+import { MainLoader, MiniLoader } from "../Components/Page/Common";
 import apiResponse from "../Interfaces/apiResponse";
 import { toastNotify } from "../Helper";
 import { useSelector } from "react-redux";

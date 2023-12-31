@@ -7,7 +7,7 @@ import { userModel } from "../Interfaces";
 import { useDispatch } from "react-redux";
 import { setLoggedInUser } from "../Storage/Redux/userAuthSlice";
 import { useNavigate } from "react-router-dom";
-import { MainLoader } from "./Common";
+import { MainLoader } from "../Components/Page/Common";
 
 function Login() {
   const [loginUser] = useLoginUserMutation();

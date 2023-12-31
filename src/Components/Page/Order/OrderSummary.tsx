@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../Storage/Redux/store";
 import { useState } from "react";
 import { useUpdateOrderHeaderMutation } from "../../../Apis/orderApi";
-import { MainLoader } from "../../../Pages/Common";
+import { MainLoader } from "../Common";
 
 function OrderSummary({ data, userInput }: orderSummaryProps) {
   const badgeTpeColor = getStatusColor(data.status!);

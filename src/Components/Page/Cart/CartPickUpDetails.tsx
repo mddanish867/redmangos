@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { cartItemModel, userModel } from "../../../Interfaces";
 import { RootState } from "../../../Storage/Redux/store";
 import { inputHelper } from "../../../Helper";
-import { MiniLoader } from "../../../Pages/Common";
+import { MiniLoader } from "../Common";
 import { useInitiatePaymentMutation } from "../../../Apis/paymentApi";
 import { useNavigate } from "react-router-dom";
 import apiResponse from "../../../Interfaces/apiResponse";

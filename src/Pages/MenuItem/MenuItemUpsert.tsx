@@ -7,7 +7,7 @@ import {
 } from "../../Apis/menuItemApi";
 import { SD_Categories } from "../../Utility/SD";
 import { inputHelper, toastNotify } from "../../Helper";
-import { MainLoader } from "../Common";
+import { MainLoader } from "../../Components/Page/Common";
 
 const Categories = [
   SD_Categories.APPETIZER,

@@ -3,7 +3,7 @@ import {
   useDeleteMenuItemMutation,
   useGetMenuItemQuery,
 } from "../../Apis/menuItemApi";
-import { MainLoader } from "../Common";
+import { MainLoader } from "../../Components/Page/Common";
 import { menuItemModel } from "../../Interfaces";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

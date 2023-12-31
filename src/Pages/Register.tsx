@@ -5,7 +5,7 @@ import { useRegisterUserMutation } from "../Apis/authApi";
 import apiResponse from "../Interfaces/apiResponse";
 import { toastNotify } from "../Helper";
 import { useNavigate } from "react-router-dom";
-import { MainLoader } from "./Common";
+import { MainLoader } from "../Components/Page/Common";
 function Register() {
   const [registerUser] = useRegisterUserMutation();
   const [loading, setLoading] = useState(false);
