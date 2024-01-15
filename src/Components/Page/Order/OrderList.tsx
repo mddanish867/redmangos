@@ -11,8 +11,7 @@ function OrderList({ isLoading, orderData }: OrderListProps) {
     <>
       {isLoading && <MainLoader />}
       {!isLoading && (
-        <div className="table p-5">
-          <h4 className="text-success">Orders List</h4>
+        <div className="table p-2">
           <div className="p-2">
             <div className="row border">
               <div className="col-1">ID</div>

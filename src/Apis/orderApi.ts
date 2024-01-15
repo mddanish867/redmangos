@@ -23,16 +23,28 @@ const orderApi = createApi({
       }),
       invalidatesTags: ["Orders"],
     }),
+
     // Get all order API
     getAllOrder: builder.query({
-      query: (userId) => ({
+      query: ({ userId, searchString, status, pageSize, pageNumber }) => ({
         url: "order",
         params: {
-          userId: userId,
+          ...(userId && { userId }),
+          ...(searchString && { searchString }),
+          ...(status && { status }),
+          ...(pageSize && { pageSize }),
+          ...(pageNumber && { pageNumber }),
         },
       }),
+      transformResponse(apiResponse: { result: any }, meta: any) {
+        return {
+          apiResponse,
+          totalRecord: meta.response.headers.get("X-Pagination"),
+        };
+      },
       providesTags: ["Orders"],
     }),
+
     // Egt Order details by Id
     getOrderDetails: builder.query({
       query: (id) => ({
@@ -41,17 +53,17 @@ const orderApi = createApi({
       providesTags: ["Orders"],
     }),
     // update status
-    updateOrderHeader : builder.mutation({
-      query:(orderDetails)=>({
-        url:"order/" + orderDetails.orderHeaderId,
-        method:"PUT",
-        headers:{
-          "Content-type":"application/json",
+    updateOrderHeader: builder.mutation({
+      query: (orderDetails) => ({
+        url: "order/" + orderDetails.orderHeaderId,
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
         },
-        body:orderDetails
+        body: orderDetails,
       }),
-      invalidatesTags:["Orders"]
-    })
+      invalidatesTags: ["Orders"],
+    }),
   }),
 });
 
